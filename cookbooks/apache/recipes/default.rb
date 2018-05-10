@@ -9,7 +9,7 @@ package "apache" do
 end 
 
 service "apache2" do
-service_name "apache2"
+service_name "httpd"
 action[:install,:enable]
 end 
 
