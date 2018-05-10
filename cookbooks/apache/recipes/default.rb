@@ -10,6 +10,6 @@ end
 
 service "apache2" do
 service_name "apache2"
-action [:install,:enable]
+action :enable
 end 
 
