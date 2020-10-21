@@ -10,6 +10,21 @@ You can create a cookbook_file resource in a recipe file:
       group "root"
       mode "644"
     end
+A cookbook_file resource can be used with any context, including binary files.
+Once you’re done developing and testing code on your local workstation, you can upload it to the Chef Infra Server. The Chef Infra Server acts as a hub for configuration data. It stores cookbooks, the policies that are applied to the systems in your infrastructure and metadata that describes each system. The knife command lets you communicate with the Chef Infra Server from your workstation. For example, you use it to upload your cookbooks.
 
+To get a sense of how the Chef InSpec language works, here are some examples. This Chef InSpec rule ensures that insecure services and protocols, such as telnet, are not used.
+
+describe package('telnetd') do
+  it { should_not be_installed }
+end
+
+describe inetd_conf do
+  its('telnet') { should eq nil }
+end
+Chef Automate
+Chef Automate provides a full suite of enterprise capabilities for node visibility and compliance. Chef Automate integrates with the open-source products Chef Infra Client, Chef InSpec and Chef Habitat. Chef Automate comes with comprehensive 24x7 support services for the entire platform, including open source components.
+
+Chef Automate gives you a full-stack continuous compliance and security, as well as visibility into your applications and infrastructure.
 
 For further information, see the Chef documentation (https://docs.chef.io/essentials_cookbook_files.html).
